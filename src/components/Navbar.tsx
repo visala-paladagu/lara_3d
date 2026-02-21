@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
+  { name: 'Research Group', href: '/research' },
   { name: 'Features', href: '#features' },
   { name: 'How It Works', href: '#how-it-works' },
   { name: 'Who We Help', href: '#who-we-help' },
