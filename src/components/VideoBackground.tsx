@@ -19,7 +19,7 @@ const VideoBackground = () => {
         playsInline
         className="absolute min-h-full min-w-full object-cover opacity-60"
       >
-        <source src="/videos/bg-video.mp4" type="video/mp4" />
+        <source src={`${import.meta.env.BASE_URL}videos/bg-video.mp4`} type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/30 to-background/60" />
     </div>
