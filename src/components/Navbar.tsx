@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const navItems = [
   { name: 'Research Group', href: '/research' },
@@ -39,13 +40,23 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm"
-            >
-              {item.name}
-            </a>
+            item.href.startsWith('/') ? (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm"
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium text-sm"
+              >
+                {item.name}
+              </a>
+            )
           ))}
           <motion.button
             whileHover={{ scale: 1.02 }}
@@ -71,14 +82,25 @@ const Navbar = () => {
           className="md:hidden bg-card mt-2 mx-4 rounded-2xl p-6 shadow-lg border border-border"
         >
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="block py-3 text-muted-foreground hover:text-primary transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {item.name}
-            </a>
+            item.href.startsWith('/') ? (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="block py-3 text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                key={item.name}
+                href={item.href}
+                className="block py-3 text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.name}
+              </a>
+            )
           ))}
           <button className="w-full mt-4 px-5 py-3 bg-primary rounded-full text-primary-foreground font-medium">
             Get Started
